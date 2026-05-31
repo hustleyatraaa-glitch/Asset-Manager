@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
+import { GoogleIcon } from "./BrandIcons";
 
 const reviews = [
   {
@@ -8,7 +9,7 @@ const reviews = [
     name: "Subhendu Pan",
     location: "Traveller",
     rating: 5,
-    lang: "en",
+    hinglish: false,
     text: "It was our best experience in Rajrappa. Hospitality has been just awesome. Felt one with nature and completely rejuvenated. Excellent cleanliness, good food, and wonderful staff.",
   },
   {
@@ -16,7 +17,7 @@ const reviews = [
     name: "Sourav Banik",
     location: "Traveller",
     rating: 5,
-    lang: "en",
+    hinglish: false,
     text: "One of the best resorts I ever enjoyed. Excellent vegan food, great hospitality, awesome rooms. Staff very soft spoken. Felt sad to leave — my wife and I both loved it so much.",
   },
   {
@@ -24,31 +25,31 @@ const reviews = [
     name: "Rajesh Kumar",
     location: "Ranchi",
     rating: 5,
-    lang: "hi",
-    text: "माँ छिन्नमस्तिके मंदिर के पास होने की वजह से यहाँ आना बहुत खास लगता है। कमरे साफ और आरामदायक हैं, खाना स्वादिष्ट था। परिवार के साथ आने के लिए बेस्ट जगह।",
+    hinglish: true,
+    text: "Maa Chhinnamastike Mandir ke paas hone ki wajah se yahan aana bahut khas lagta hai. Kamre saaf aur aaramdaayak hain, 24 ghante garam paani milta hai. Khaana bahut swaadisht tha. Parivaar ke saath aane ke liye best jagah.",
   },
   {
     id: 4,
     name: "Mrinmay Majhi",
     location: "Traveller",
     rating: 5,
-    lang: "en",
-    text: "Great experience staying in this wonderful resort. I really enjoyed my time in Rajrappa — delicious food, real peace, and very kind hospitality. Will definitely be back.",
+    hinglish: false,
+    text: "Great experience staying in this wonderful resort. Really enjoyed my time in Rajrappa — delicious food, real peace, and very kind hospitality. Will definitely be back.",
   },
   {
     id: 5,
     name: "Priya Singh",
     location: "Dhanbad",
     rating: 5,
-    lang: "hi",
-    text: "स्टाफ बहुत मददगार और विनम्र है। नदी और जंगल का नज़ारा बेहद खूबसूरत है। मैनेजर साहब ने हमारा बहुत ख्याल रखा। हम फिर ज़रूर आएंगे!",
+    hinglish: true,
+    text: "Staff bahut madadgaar aur vinamr hai. Nadi aur jungle ka nazaara behad khoobsoorat hai. Manager sahab ne hamara bahut khyaal rakha. Hum phir zaroor aayenge!",
   },
   {
     id: 6,
     name: "Debashis B.",
     location: "Asansol",
     rating: 4,
-    lang: "en",
+    hinglish: false,
     text: "Great place near Mata Chhinnamastika's abode. Lush greenery, great amenities, excellent provisions for marriage ceremonies. The vegetarian food is absolutely exotic.",
   },
   {
@@ -56,20 +57,20 @@ const reviews = [
     name: "Sunita Devi",
     location: "Hazaribagh",
     rating: 5,
-    lang: "hi",
-    text: "शादी की सालगिरह पर यहाँ रुके — बैंक्वेट हॉल और बगीचा बहुत सुंदर है। झारखंड सरकार और Iksha Resorts की तारीफ — ऐसी जगह जो दिल को सुकून देती है।",
+    hinglish: true,
+    text: "Shaadi ki salgiraa par yahan ruke — banquet hall aur bageeche bahut sundar hain. Jharkhand Sarkar aur Iksha Resorts ki tarif — aisi jagah jo dil ko sukoon deti hai.",
   },
 ];
 
 function Stars({ count }: { count: number }) {
   return (
     <div className="flex gap-0.5">
-      {[1,2,3,4,5].map((i) => (
+      {[1, 2, 3, 4, 5].map((i) => (
         <svg key={i} width="16" height="16" viewBox="0 0 24 24"
           fill={i <= count ? "#c9833a" : "none"}
           stroke={i <= count ? "#c9833a" : "#c9833a40"}
           strokeWidth="1.5" aria-hidden="true">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z"/>
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14l-5-4.87 6.91-1.01L12 2z" />
         </svg>
       ))}
     </div>
@@ -92,7 +93,6 @@ export default function Reviews() {
   }, [paused, next]);
 
   const r = reviews[current];
-  const isHindi = r.lang === "hi";
 
   return (
     <section id="reviews" className="py-12 md:py-28 bg-muted/30" data-testid="section-reviews">
@@ -107,7 +107,7 @@ export default function Reviews() {
             className="text-secondary text-xs tracking-[0.3em] uppercase mb-3 font-medium"
             style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
-            मेहमानों की आवाज़ · Guest Voices
+            Guest Voices
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
@@ -150,39 +150,47 @@ export default function Reviews() {
               transition={{ duration: 0.35 }}
               className="bg-white border border-border rounded-sm shadow-sm overflow-hidden mb-5"
             >
-              {/* Language strip */}
+              {/* Language tag */}
               <div
-                className="py-1.5 px-4 text-[10px] tracking-[0.2em] uppercase font-medium text-center"
+                className="py-1.5 px-4 text-[10px] tracking-[0.25em] uppercase font-semibold text-center"
                 style={{
-                  background: isHindi ? "linear-gradient(90deg,#1a3d2b,#2d6a4a)" : "linear-gradient(90deg,#3d2e1a,#7a5c2d)",
+                  background: r.hinglish
+                    ? "linear-gradient(90deg, #1a3d2b, #2d6a4a)"
+                    : "linear-gradient(90deg, #3d2e1a, #7a5c2d)",
                   color: "#f5f0e8",
                   fontFamily: "'DM Sans', sans-serif",
                 }}
               >
-                {isHindi ? "हिंदी समीक्षा" : "English Review"}
+                {r.hinglish ? "Hinglish Review" : "English Review"}
               </div>
 
-              <div className="px-5 py-6 md:px-8 md:py-8">
+              <div className="px-6 py-7 md:px-9 md:py-9">
                 {/* Stars */}
-                <div className="flex justify-center mb-4">
+                <div className="flex justify-center mb-5">
                   <Stars count={r.rating} />
                 </div>
 
-                {/* Review text */}
+                {/* Review text — clear readable font, not italic */}
                 <blockquote
-                  className={`text-sm md:text-base leading-relaxed text-foreground/80 mb-6 text-center ${isHindi ? "" : "font-serif italic"}`}
-                  lang={isHindi ? "hi" : "en"}
+                  className="text-[15px] md:text-[16px] leading-[1.75] text-foreground/75 mb-6 text-center"
+                  style={{ fontFamily: "'DM Sans', sans-serif", fontWeight: 400 }}
                 >
                   "{r.text}"
                 </blockquote>
 
                 {/* Author */}
-                <div className="flex flex-col items-center gap-0.5">
-                  <div className="w-6 h-px mb-2" style={{ backgroundColor: "#c9833a" }} />
-                  <div className="font-semibold text-primary text-sm" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <div className="flex flex-col items-center gap-1">
+                  <div className="w-8 h-px mb-2" style={{ backgroundColor: "#c9833a" }} />
+                  <div
+                    className="font-bold text-primary text-sm tracking-wide"
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  >
                     {r.name}
                   </div>
-                  <div className="text-xs text-muted-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  <div
+                    className="text-xs text-muted-foreground"
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                  >
                     {r.location}
                   </div>
                 </div>
@@ -190,8 +198,8 @@ export default function Reviews() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Navigation — big touch targets for mobile */}
-          <div className="flex items-center justify-between gap-3">
+          {/* Navigation */}
+          <div className="flex items-center justify-between gap-3 mb-5">
             <button
               onClick={prev}
               data-testid="button-reviews-prev"
@@ -202,8 +210,7 @@ export default function Reviews() {
               <span className="text-xs font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>Prev</span>
             </button>
 
-            {/* Dots */}
-            <div className="flex gap-2 items-center justify-center flex-wrap">
+            <div className="flex gap-2 items-center justify-center">
               {reviews.map((_, i) => (
                 <button
                   key={i}
@@ -227,10 +234,37 @@ export default function Reviews() {
             </button>
           </div>
 
-          {/* Review counter */}
-          <p className="text-center text-xs text-muted-foreground mt-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            {current + 1} of {reviews.length} reviews
-          </p>
+          {/* Google Reviews CTA — highlighted */}
+          <motion.a
+            href="https://maps.app.goo.gl/XhCxXD5n6sabVxYU9"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="button-google-reviews"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="flex items-center justify-center gap-3 w-full py-4 border-2 border-[#4285F4]/30 bg-white shadow-sm hover:shadow-md hover:border-[#4285F4]/60 transition-all duration-300 rounded-sm"
+          >
+            <GoogleIcon size={22} />
+            <div className="text-left">
+              <div
+                className="text-sm font-bold text-foreground"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                Check Reviews on Google
+              </div>
+              <div
+                className="text-xs text-muted-foreground"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                129+ real guest reviews · 4.0★ rating
+              </div>
+            </div>
+            <ExternalLink size={14} className="text-muted-foreground ml-1" />
+          </motion.a>
         </div>
       </div>
     </section>

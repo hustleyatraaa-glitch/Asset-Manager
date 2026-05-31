@@ -2,20 +2,20 @@ import { motion } from "framer-motion";
 import { Check } from "lucide-react";
 
 const features = [
-  { label: "17 AC Rooms" },
-  { label: "Luxury Suites" },
-  { label: "Free Wi-Fi" },
-  { label: "Restaurant" },
-  { label: "Veg & Non-Veg Food" },
-  { label: "Banquet Hall" },
-  { label: "Garden & Lawn" },
-  { label: "150-Guest Capacity" },
-  { label: "24×7 Hot Water" },
-  { label: "Car Parking" },
-  { label: "Intercom in Rooms" },
-  { label: "Near Rajrappa Temple" },
-  { label: "Events & Functions" },
-  { label: "Jharkhand Tourism" },
+  "17 AC Rooms",
+  "Luxury Suites",
+  "Free Wi-Fi",
+  "Restaurant",
+  "Veg & Non-Veg Food",
+  "Banquet Hall",
+  "Garden & Lawn",
+  "150-Guest Capacity",
+  "24×7 Hot Water",
+  "Car Parking",
+  "Intercom in Rooms",
+  "Near Rajrappa Temple",
+  "Events & Functions",
+  "Jharkhand Tourism",
 ];
 
 export default function Features() {
@@ -40,10 +40,8 @@ export default function Features() {
           >
             Everything You Need
           </div>
-          <h2
-            className="text-white text-2xl md:text-3xl font-serif font-bold"
-          >
-            KESRIKUNJ में यह सब मिलता है
+          <h2 className="text-white text-2xl md:text-3xl font-serif font-bold">
+            KESRIKUNJ mein yah sab milta hai
           </h2>
           <p
             className="text-white/55 text-sm mt-1"
@@ -53,29 +51,29 @@ export default function Features() {
           </p>
         </motion.div>
 
-        {/* Checklist grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-3">
-          {features.map((f, i) => (
+        {/* Checklist grid — text first, then tick */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-3.5">
+          {features.map((label, i) => (
             <motion.div
-              key={f.label}
-              initial={{ opacity: 0, x: -10 }}
+              key={label}
+              initial={{ opacity: 0, x: -8 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.4, delay: i * 0.04 }}
-              className="flex items-center gap-2.5"
+              className="flex items-center justify-between gap-2 bg-white/5 border border-white/10 px-3 py-2.5 rounded-sm"
             >
+              <span
+                className="text-white font-semibold text-sm leading-tight"
+                style={{ fontFamily: "'DM Sans', sans-serif" }}
+              >
+                {label}
+              </span>
               <div
                 className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
                 style={{ background: "rgba(201,131,58,0.18)", border: "1.5px solid #c9833a" }}
               >
                 <Check size={11} strokeWidth={3} className="text-secondary" />
               </div>
-              <span
-                className="text-white font-semibold text-sm leading-tight"
-                style={{ fontFamily: "'DM Sans', sans-serif" }}
-              >
-                {f.label}
-              </span>
             </motion.div>
           ))}
         </div>

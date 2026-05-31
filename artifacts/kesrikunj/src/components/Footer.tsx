@@ -1,4 +1,5 @@
-import { MessageCircle, Facebook, Instagram, Phone, MapPin, Globe, Mail } from "lucide-react";
+import { Phone, MapPin, Globe, Mail } from "lucide-react";
+import { WhatsAppIcon, FacebookIcon, InstagramIcon } from "./BrandIcons";
 
 const quickLinks = [
   { name: "Home",     href: "#home" },
@@ -11,13 +12,13 @@ const quickLinks = [
 ];
 
 const externalLinks = [
-  { name: "Official Website",  href: "https://www.iksharesorts.com" },
-  { name: "TripAdvisor",       href: "https://www.tripadvisor.in/Hotel_Review-g33076531-d33074220-Reviews-Rajrappa_Hotel_And_Banquet_Hall-Lerhitongri_Ramgarh_District_Jharkhand.html" },
-  { name: "WedMeGood",         href: "https://www.wedmegood.com/wedding-venues/Rajrappa-Hotel-and-Banquet-Hall-25705812" },
-  { name: "JustDial — Resort", href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp" },
-  { name: "JustDial — Banquet",href: "https://www.justdial.com/Ramgarh-Jharkhand/Kesrikunj-Royals-Banquet-And-Garden-Rajrappa/9999P6553-6553-190825224443-D6W7_BZDET" },
-  { name: "Restaurant Guru",   href: "https://restaurant-guru.in/KESRIKUNJ-Resort-Banquet-and-Garden-Rajrappa-2" },
-  { name: "MenuList",          href: "https://menulist.menu/restaurants/lerhitongri/kesrikunj-resort-banquet-and-garden" },
+  { name: "Official Website",   href: "https://www.iksharesorts.com" },
+  { name: "TripAdvisor",        href: "https://www.tripadvisor.in/Hotel_Review-g33076531-d33074220-Reviews-Rajrappa_Hotel_And_Banquet_Hall-Lerhitongri_Ramgarh_District_Jharkhand.html" },
+  { name: "WedMeGood",          href: "https://www.wedmegood.com/wedding-venues/Rajrappa-Hotel-and-Banquet-Hall-25705812" },
+  { name: "JustDial — Resort",  href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp" },
+  { name: "JustDial — Banquet", href: "https://www.justdial.com/Ramgarh-Jharkhand/Kesrikunj-Royals-Banquet-And-Garden-Rajrappa/9999P6553-6553-190825224443-D6W7_BZDET" },
+  { name: "Restaurant Guru",    href: "https://restaurant-guru.in/KESRIKUNJ-Resort-Banquet-and-Garden-Rajrappa-2" },
+  { name: "MenuList",           href: "https://menulist.menu/restaurants/lerhitongri/kesrikunj-resort-banquet-and-garden" },
 ];
 
 const scrollTo = (href: string) => {
@@ -38,23 +39,31 @@ export default function Footer() {
             <p className="text-primary-foreground/55 text-sm leading-relaxed mb-5" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               A sacred retreat near Maa Chhinnamastike Temple, Rajrappa, Jharkhand. Managed by Iksha Resorts Pvt. Ltd.
             </p>
-            {/* Social icons */}
-            <div className="flex gap-2 flex-wrap">
-              <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer" data-testid="link-footer-whatsapp"
-                className="w-9 h-9 flex items-center justify-center border border-white/20 text-white/60 hover:bg-green-500 hover:text-white hover:border-green-500 transition-all" aria-label="WhatsApp">
-                <MessageCircle size={15} />
+            {/* Real brand social icons */}
+            <div className="flex gap-2">
+              <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer"
+                data-testid="link-footer-whatsapp"
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 hover:border-[#25D366] hover:bg-[#25D366]/15 transition-all"
+                aria-label="WhatsApp">
+                <WhatsAppIcon size={18} />
               </a>
-              <a href="https://www.facebook.com/iksharesorts/" target="_blank" rel="noopener noreferrer" data-testid="link-footer-facebook"
-                className="w-9 h-9 flex items-center justify-center border border-white/20 text-white/60 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all" aria-label="Facebook">
-                <Facebook size={15} />
+              <a href="https://www.facebook.com/iksharesorts/" target="_blank" rel="noopener noreferrer"
+                data-testid="link-footer-facebook"
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 hover:border-[#1877F2] hover:bg-[#1877F2]/15 transition-all"
+                aria-label="Facebook">
+                <FacebookIcon size={18} />
               </a>
-              <a href="https://www.instagram.com/iksha.in/" target="_blank" rel="noopener noreferrer" data-testid="link-footer-instagram"
-                className="w-9 h-9 flex items-center justify-center border border-white/20 text-white/60 hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all" aria-label="Instagram">
-                <Instagram size={15} />
+              <a href="https://www.instagram.com/iksha.in/" target="_blank" rel="noopener noreferrer"
+                data-testid="link-footer-instagram"
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 hover:border-pink-400 hover:bg-pink-400/15 transition-all"
+                aria-label="Instagram">
+                <InstagramIcon size={18} />
               </a>
-              <a href="https://www.iksharesorts.com" target="_blank" rel="noopener noreferrer" data-testid="link-footer-website"
-                className="w-9 h-9 flex items-center justify-center border border-white/20 text-white/60 hover:bg-secondary hover:text-primary hover:border-secondary transition-all" aria-label="Official Website">
-                <Globe size={15} />
+              <a href="https://www.iksharesorts.com" target="_blank" rel="noopener noreferrer"
+                data-testid="link-footer-website"
+                className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 hover:border-secondary hover:bg-secondary/15 transition-all"
+                aria-label="Official Website">
+                <Globe size={16} className="text-white/60" />
               </a>
             </div>
           </div>
@@ -95,7 +104,7 @@ export default function Footer() {
                     className="text-sm text-primary-foreground/55 hover:text-secondary transition-colors flex items-center gap-1.5"
                     style={{ fontFamily: "'DM Sans', sans-serif" }}
                   >
-                    <Globe size={11} className="shrink-0 opacity-50" />
+                    <Globe size={11} className="shrink-0 opacity-40" />
                     {link.name}
                   </a>
                 </li>
@@ -117,17 +126,17 @@ export default function Footer() {
               </div>
               <a href="tel:+919155789484" data-testid="link-footer-phone-1"
                 className="flex items-center gap-2.5 hover:text-secondary transition-colors">
-                <Phone size={15} className="text-secondary shrink-0" />
+                <Phone size={14} className="text-secondary shrink-0" />
                 <span className="text-sm text-primary-foreground/55" style={{ fontFamily: "'DM Sans', sans-serif" }}>+91 91557 89484</span>
               </a>
               <a href="tel:+918240309328" data-testid="link-footer-phone-2"
                 className="flex items-center gap-2.5 hover:text-secondary transition-colors">
-                <Phone size={15} className="text-secondary shrink-0" />
+                <Phone size={14} className="text-secondary shrink-0" />
                 <span className="text-sm text-primary-foreground/55" style={{ fontFamily: "'DM Sans', sans-serif" }}>+91 82403 09328</span>
               </a>
               <a href="mailto:iksharesorts@gmail.com" data-testid="link-footer-email"
                 className="flex items-center gap-2.5 hover:text-secondary transition-colors">
-                <Mail size={15} className="text-secondary shrink-0" />
+                <Mail size={14} className="text-secondary shrink-0" />
                 <span className="text-sm text-primary-foreground/55" style={{ fontFamily: "'DM Sans', sans-serif" }}>iksharesorts@gmail.com</span>
               </a>
               <a href="https://maps.app.goo.gl/XhCxXD5n6sabVxYU9" target="_blank" rel="noopener noreferrer"

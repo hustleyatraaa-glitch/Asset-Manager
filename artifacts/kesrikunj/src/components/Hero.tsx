@@ -1,20 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Phone, MessageCircle, Facebook, Map, Star, MapPin } from "lucide-react";
-
-function JustDialIcon() {
-  return (
-    <svg width="15" height="15" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <text x="50%" y="56%" dominantBaseline="middle" textAnchor="middle" fill="currentColor" fontSize="15" fontWeight="bold" fontFamily="sans-serif">JD</text>
-    </svg>
-  );
-}
+import { ChevronDown, Phone, Star, MapPin } from "lucide-react";
+import { WhatsAppIcon, FacebookIcon, InstagramIcon, JustDialIcon } from "./BrandIcons";
 
 const socialLinks = [
-  { label: "WhatsApp", href: "https://wa.me/919155789484",                                                                                                                       icon: <MessageCircle size={15} /> },
-  { label: "Facebook", href: "https://www.facebook.com/iksharesorts/",                                                                                                          icon: <Facebook size={15} /> },
-  { label: "Maps",     href: "https://maps.app.goo.gl/XhCxXD5n6sabVxYU9",                                                                                                      icon: <Map size={15} /> },
-  { label: "JustDial", href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp", icon: <JustDialIcon /> },
+  { label: "WhatsApp", href: "https://wa.me/919155789484",                                                                                             icon: <WhatsAppIcon size={16} /> },
+  { label: "Facebook", href: "https://www.facebook.com/iksharesorts/",                                                                                icon: <FacebookIcon size={16} /> },
+  { label: "Instagram", href: "https://www.instagram.com/iksha.in/",                                                                                  icon: <InstagramIcon size={16} /> },
+  { label: "JustDial", href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp", icon: <JustDialIcon size={16} /> },
 ];
 
 const heroImages = [
@@ -62,7 +55,7 @@ export default function Hero() {
         />
       </AnimatePresence>
 
-      {/* Dark gradient overlay for text legibility */}
+      {/* Dark gradient overlay */}
       <div
         className="absolute inset-0"
         style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.72) 100%)" }}
@@ -72,7 +65,7 @@ export default function Hero() {
       {/* Main content */}
       <div className="relative z-10 flex flex-col items-center text-center px-5 w-full max-w-2xl mx-auto">
 
-        {/* Trust signal — Google Rating */}
+        {/* Google Rating badge */}
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -80,7 +73,7 @@ export default function Hero() {
           className="flex items-center gap-2 bg-black/35 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 mb-6"
         >
           <div className="flex gap-0.5">
-            {[1,2,3,4].map(i => <Star key={i} size={11} className="fill-secondary text-secondary" />)}
+            {[1, 2, 3, 4].map(i => <Star key={i} size={11} className="fill-secondary text-secondary" />)}
             <Star size={11} className="text-secondary" />
           </div>
           <span className="text-white/90 text-xs font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -111,7 +104,6 @@ export default function Hero() {
           Resort, Banquet &amp; Garden
         </motion.p>
 
-        {/* Unique hook */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -136,11 +128,7 @@ export default function Hero() {
             whileTap={{ scale: 0.97 }}
             data-testid="button-call-now-hero"
             className="flex items-center justify-center gap-2.5 px-8 py-4 text-sm tracking-widest uppercase font-bold text-white w-full sm:w-auto"
-            style={{
-              background: "linear-gradient(135deg, #c9833a, #e09d55)",
-              boxShadow: "0 6px 24px rgba(201,131,58,0.5)",
-              fontFamily: "'DM Sans', sans-serif",
-            }}
+            style={{ background: "linear-gradient(135deg, #c9833a, #e09d55)", boxShadow: "0 6px 24px rgba(201,131,58,0.5)", fontFamily: "'DM Sans', sans-serif" }}
           >
             <Phone size={16} />
             Call Now — Free
@@ -156,7 +144,7 @@ export default function Hero() {
             className="flex items-center justify-center gap-2.5 px-8 py-4 text-sm tracking-widest uppercase font-semibold text-white w-full sm:w-auto border border-white/25 backdrop-blur-sm hover:border-white/50 transition-colors"
             style={{ background: "rgba(255,255,255,0.1)", fontFamily: "'DM Sans', sans-serif" }}
           >
-            <MessageCircle size={16} />
+            <WhatsAppIcon size={17} />
             WhatsApp
           </motion.a>
         </motion.div>
@@ -184,11 +172,7 @@ export default function Hero() {
             key={i}
             onClick={() => setCurrent(i)}
             className="transition-all duration-300 rounded-full"
-            style={{
-              width: i === current ? "20px" : "6px",
-              height: "6px",
-              backgroundColor: i === current ? "#c9833a" : "rgba(255,255,255,0.4)",
-            }}
+            style={{ width: i === current ? "20px" : "6px", height: "6px", backgroundColor: i === current ? "#c9833a" : "rgba(255,255,255,0.4)" }}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
@@ -213,8 +197,8 @@ export default function Hero() {
               data-testid={`link-hero-${s.label.toLowerCase()}`}
               aria-label={s.label}
               title={s.label}
-              className="w-8 h-8 flex items-center justify-center rounded-full text-white/60 hover:text-white border border-white/12 hover:border-white/35 transition-all duration-300"
-              style={{ background: "rgba(0,0,0,0.3)" }}
+              className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 hover:border-white/40 transition-all duration-300"
+              style={{ background: "rgba(0,0,0,0.35)" }}
             >
               {s.icon}
             </motion.a>
@@ -230,9 +214,7 @@ export default function Hero() {
           className="flex flex-col items-center gap-1 text-white/45 hover:text-white/75 transition-colors"
           aria-label="Scroll down"
         >
-          <span className="text-[9px] tracking-[0.22em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            Explore
-          </span>
+          <span className="text-[9px] tracking-[0.22em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>Explore</span>
           <motion.div animate={{ y: [0, 5, 0] }} transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}>
             <ChevronDown size={17} />
           </motion.div>

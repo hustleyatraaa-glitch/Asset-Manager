@@ -1,43 +1,44 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone, MapPin, MessageCircle, Facebook, Instagram, ExternalLink, Globe, Mail, Star } from "lucide-react";
+import { Phone, MapPin, ExternalLink, Globe, Mail } from "lucide-react";
+import { WhatsAppIcon, FacebookIcon, InstagramIcon, TripAdvisorIcon, JustDialIcon, WedMeGoodIcon, GoogleIcon } from "./BrandIcons";
 
 const platforms = [
   {
     name: "TripAdvisor",
     desc: "Hotel reviews",
     href: "https://www.tripadvisor.in/Hotel_Review-g33076531-d33074220-Reviews-Rajrappa_Hotel_And_Banquet_Hall-Lerhitongri_Ramgarh_District_Jharkhand.html",
-    color: "#00aa6c",
+    icon: <TripAdvisorIcon size={22} />,
   },
   {
     name: "WedMeGood",
     desc: "Wedding venue",
     href: "https://www.wedmegood.com/wedding-venues/Rajrappa-Hotel-and-Banquet-Hall-25705812",
-    color: "#e63962",
+    icon: <WedMeGoodIcon size={22} />,
   },
   {
     name: "JustDial — Resort",
     desc: "Resort listing",
     href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp",
-    color: "#ff6600",
+    icon: <JustDialIcon size={22} />,
   },
   {
     name: "JustDial — Banquet",
     desc: "Banquet listing",
     href: "https://www.justdial.com/Ramgarh-Jharkhand/Kesrikunj-Royals-Banquet-And-Garden-Rajrappa/9999P6553-6553-190825224443-D6W7_BZDET",
-    color: "#ff6600",
+    icon: <JustDialIcon size={22} />,
   },
   {
     name: "Restaurant Guru",
     desc: "Food & dining",
     href: "https://restaurant-guru.in/KESRIKUNJ-Resort-Banquet-and-Garden-Rajrappa-2",
-    color: "#f4a c00",
+    icon: <GoogleIcon size={22} />,
   },
   {
     name: "MenuList",
     desc: "Full menu",
     href: "https://menulist.menu/restaurants/lerhitongri/kesrikunj-resort-banquet-and-garden",
-    color: "#2c7be5",
+    icon: <Globe size={22} className="text-blue-500" />,
   },
 ];
 
@@ -111,12 +112,12 @@ export default function Contact() {
             <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer"
               data-testid="link-whatsapp"
               className="flex items-center gap-4 p-4 border border-border hover:border-green-500 hover:bg-green-50 transition-all duration-300 group">
-              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all duration-300 shrink-0">
-                <MessageCircle size={17} />
+              <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center shrink-0">
+                <WhatsAppIcon size={22} />
               </div>
               <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">WhatsApp</div>
-                <div className="font-semibold text-foreground">wa.me/919155789484</div>
+                <div className="font-semibold text-foreground">+91 91557 89484</div>
               </div>
             </a>
 
@@ -138,40 +139,39 @@ export default function Contact() {
               <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Address</div>
                 <div className="font-medium text-foreground text-sm leading-relaxed">
-                  Rajrappa Road, Rajrappa<br />
-                  Lerhitongri, Jharkhand – 829150
+                  Rajrappa Road, Rajrappa<br />Lerhitongri, Jharkhand – 829150
                 </div>
-                <a
-                  href="https://maps.app.goo.gl/XhCxXD5n6sabVxYU9"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <a href="https://maps.app.goo.gl/XhCxXD5n6sabVxYU9" target="_blank" rel="noopener noreferrer"
                   data-testid="link-get-directions"
-                  className="inline-flex items-center gap-1 text-xs text-secondary hover:underline mt-1.5"
-                >
+                  className="inline-flex items-center gap-1 text-xs text-secondary hover:underline mt-1.5">
                   Get Directions <ExternalLink size={11} />
                 </a>
               </div>
             </div>
 
-            {/* Social row */}
+            {/* Social row — real icons */}
             <div>
               <div className="text-xs tracking-widest uppercase text-muted-foreground mb-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>Follow Us</div>
               <div className="flex gap-2 flex-wrap">
                 <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer" data-testid="link-social-whatsapp"
-                  className="flex items-center gap-1.5 px-3 py-2 border border-border text-xs text-muted-foreground hover:bg-green-500 hover:text-white hover:border-green-500 transition-all" aria-label="WhatsApp">
-                  <MessageCircle size={14} /> WhatsApp
+                  className="flex items-center gap-2 px-3 py-2 border border-border hover:bg-[#25D366]/10 hover:border-[#25D366] transition-all" aria-label="WhatsApp">
+                  <WhatsAppIcon size={18} />
+                  <span className="text-xs font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>WhatsApp</span>
                 </a>
                 <a href="https://www.facebook.com/iksharesorts/" target="_blank" rel="noopener noreferrer" data-testid="link-social-facebook"
-                  className="flex items-center gap-1.5 px-3 py-2 border border-border text-xs text-muted-foreground hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all" aria-label="Facebook">
-                  <Facebook size={14} /> Facebook
+                  className="flex items-center gap-2 px-3 py-2 border border-border hover:bg-[#1877F2]/10 hover:border-[#1877F2] transition-all" aria-label="Facebook">
+                  <FacebookIcon size={18} />
+                  <span className="text-xs font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>Facebook</span>
                 </a>
                 <a href="https://www.instagram.com/iksha.in/" target="_blank" rel="noopener noreferrer" data-testid="link-social-instagram"
-                  className="flex items-center gap-1.5 px-3 py-2 border border-border text-xs text-muted-foreground hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all" aria-label="Instagram">
-                  <Instagram size={14} /> Instagram
+                  className="flex items-center gap-2 px-3 py-2 border border-border hover:bg-pink-50 hover:border-pink-400 transition-all" aria-label="Instagram">
+                  <InstagramIcon size={18} />
+                  <span className="text-xs font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>Instagram</span>
                 </a>
                 <a href="https://www.iksharesorts.com" target="_blank" rel="noopener noreferrer" data-testid="link-social-website"
-                  className="flex items-center gap-1.5 px-3 py-2 border border-border text-xs text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all" aria-label="Website">
-                  <Globe size={14} /> Website
+                  className="flex items-center gap-2 px-3 py-2 border border-border hover:bg-primary/5 hover:border-primary transition-all" aria-label="Website">
+                  <Globe size={18} className="text-primary" />
+                  <span className="text-xs font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>Website</span>
                 </a>
               </div>
             </div>
@@ -218,7 +218,7 @@ export default function Contact() {
           <ExternalLink size={14} className="text-primary group-hover:text-primary-foreground" />
         </motion.a>
 
-        {/* Find Us Online — platform listings */}
+        {/* Find Us Online */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -235,10 +235,10 @@ export default function Contact() {
                 href={p.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                data-testid={`link-platform-${p.name.toLowerCase().replace(/\s+/g, "-")}`}
-                className="flex flex-col items-center gap-1.5 p-3 border border-border rounded-sm hover:shadow-md transition-all duration-200 hover:border-secondary/40 group text-center"
+                data-testid={`link-platform-${p.name.toLowerCase().replace(/[\s—]+/g, "-")}`}
+                className="flex flex-col items-center gap-2 p-3 border border-border rounded-sm hover:shadow-md transition-all duration-200 hover:border-secondary/40 group text-center"
               >
-                <Star size={14} className="text-secondary" />
+                {p.icon}
                 <span className="text-xs font-semibold text-foreground/80 leading-tight group-hover:text-primary" style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   {p.name}
                 </span>
