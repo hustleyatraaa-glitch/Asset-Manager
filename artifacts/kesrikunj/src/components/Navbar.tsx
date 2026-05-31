@@ -1,44 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Rooms", href: "#rooms" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Banquet", href: "#banquet" },
-    { name: "Reviews", href: "#reviews" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home",    href: "#home" },
+    { name: "About",  href: "#about" },
+    { name: "Rooms",  href: "#rooms" },
+    { name: "Gallery",href: "#gallery" },
+    { name: "Banquet",href: "#banquet" },
+    { name: "Reviews",href: "#reviews" },
+    { name: "Contact",href: "#contact" },
   ];
 
   const scrollToSection = (href: string) => {
     setMobileMenuOpen(false);
-    const el = document.querySelector(href);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-primary text-primary-foreground shadow-md py-3"
-          : "bg-transparent text-white py-4"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground shadow-md py-3">
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between gap-4">
         {/* Logo */}
         <a
@@ -47,9 +29,7 @@ export default function Navbar() {
           className="flex flex-col leading-none"
           data-testid="link-logo"
         >
-          <span
-            className="font-serif font-bold tracking-wider text-xl md:text-2xl"
-          >
+          <span className="font-serif font-bold tracking-wider text-xl md:text-2xl text-primary-foreground">
             iksharesorts
           </span>
           <span
@@ -67,7 +47,7 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               onClick={(e) => { e.preventDefault(); scrollToSection(link.href); }}
-              className="text-sm font-medium tracking-wide hover:text-secondary transition-colors"
+              className="text-sm font-medium tracking-wide text-primary-foreground/80 hover:text-secondary transition-colors"
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
               {link.name}
@@ -77,10 +57,7 @@ export default function Navbar() {
             href="tel:+919155789484"
             data-testid="button-call-now-nav"
             className="flex items-center gap-2 px-5 py-2.5 text-sm font-medium tracking-wide text-primary transition-all hover:opacity-90"
-            style={{
-              background: "linear-gradient(135deg, #c9833a, #e09d55)",
-              fontFamily: "'DM Sans', sans-serif",
-            }}
+            style={{ background: "linear-gradient(135deg, #c9833a, #e09d55)", fontFamily: "'DM Sans', sans-serif" }}
           >
             <Phone size={15} />
             Call Now
@@ -99,7 +76,7 @@ export default function Navbar() {
             Call Now
           </a>
           <button
-            className="text-current p-1"
+            className="text-primary-foreground p-1"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
             data-testid="button-mobile-menu"

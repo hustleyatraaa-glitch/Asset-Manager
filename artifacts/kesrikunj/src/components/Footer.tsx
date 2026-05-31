@@ -1,24 +1,25 @@
 import { Phone, MapPin, Globe, Mail } from "lucide-react";
-import { WhatsAppIcon, FacebookIcon, InstagramIcon } from "./BrandIcons";
+import { WhatsAppIcon, FacebookIcon } from "./BrandIcons";
 
 const quickLinks = [
-  { name: "Home",     href: "#home" },
-  { name: "About",   href: "#about" },
-  { name: "Rooms",   href: "#rooms" },
-  { name: "Gallery", href: "#gallery" },
-  { name: "Banquet", href: "#banquet" },
-  { name: "Reviews", href: "#reviews" },
-  { name: "Contact", href: "#contact" },
+  { name: "Home",    href: "#home" },
+  { name: "About",  href: "#about" },
+  { name: "Rooms",  href: "#rooms" },
+  { name: "Gallery",href: "#gallery" },
+  { name: "Banquet",href: "#banquet" },
+  { name: "Reviews",href: "#reviews" },
+  { name: "Contact",href: "#contact" },
 ];
 
 const externalLinks = [
-  { name: "Official Website",   href: "https://www.iksharesorts.com" },
-  { name: "TripAdvisor",        href: "https://www.tripadvisor.in/Hotel_Review-g33076531-d33074220-Reviews-Rajrappa_Hotel_And_Banquet_Hall-Lerhitongri_Ramgarh_District_Jharkhand.html" },
-  { name: "WedMeGood",          href: "https://www.wedmegood.com/wedding-venues/Rajrappa-Hotel-and-Banquet-Hall-25705812" },
-  { name: "JustDial — Resort",  href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp" },
-  { name: "JustDial — Banquet", href: "https://www.justdial.com/Ramgarh-Jharkhand/Kesrikunj-Royals-Banquet-And-Garden-Rajrappa/9999P6553-6553-190825224443-D6W7_BZDET" },
-  { name: "Restaurant Guru",    href: "https://restaurant-guru.in/KESRIKUNJ-Resort-Banquet-and-Garden-Rajrappa-2" },
-  { name: "MenuList",           href: "https://menulist.menu/restaurants/lerhitongri/kesrikunj-resort-banquet-and-garden" },
+  { name: "Official Website",  href: "https://www.iksharesorts.com" },
+  { name: "TripAdvisor",       href: "https://www.tripadvisor.in/Hotel_Review-g33076531-d33074220-Reviews-Rajrappa_Hotel_And_Banquet_Hall-Lerhitongri_Ramgarh_District_Jharkhand.html" },
+  { name: "WedMeGood",         href: "https://www.wedmegood.com/wedding-venues/Rajrappa-Hotel-and-Banquet-Hall-25705812" },
+  { name: "Mandap.com",        href: "https://www.mandap.com/ramgarh/kesrikunj-in-ramgarh" },
+  { name: "JustDial",          href: "https://jsdl.in/DT-99NNYKNWS5R" },
+  { name: "Restaurant Guru",   href: "https://restaurant-guru.in/KESRIKUNJ-Resort-Banquet-and-Garden-Rajrappa-2" },
+  { name: "MenuList",          href: "https://menulist.menu/restaurants/lerhitongri/kesrikunj-resort-banquet-and-garden" },
+  { name: "India Lodging",     href: "https://share.google/WiIexQizVxf72U57b" },
 ];
 
 const scrollTo = (href: string) => {
@@ -39,7 +40,7 @@ export default function Footer() {
             <p className="text-primary-foreground/55 text-sm leading-relaxed mb-5" style={{ fontFamily: "'DM Sans', sans-serif" }}>
               A sacred retreat near Maa Chhinnamastike Temple, Rajrappa, Jharkhand. Managed by Iksha Resorts Pvt. Ltd.
             </p>
-            {/* Real brand social icons */}
+            {/* Social — no Instagram */}
             <div className="flex gap-2">
               <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer"
                 data-testid="link-footer-whatsapp"
@@ -52,12 +53,6 @@ export default function Footer() {
                 className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 hover:border-[#1877F2] hover:bg-[#1877F2]/15 transition-all"
                 aria-label="Facebook">
                 <FacebookIcon size={18} />
-              </a>
-              <a href="https://www.instagram.com/iksha.in/" target="_blank" rel="noopener noreferrer"
-                data-testid="link-footer-instagram"
-                className="w-10 h-10 flex items-center justify-center rounded-full border border-white/15 hover:border-pink-400 hover:bg-pink-400/15 transition-all"
-                aria-label="Instagram">
-                <InstagramIcon size={18} />
               </a>
               <a href="https://www.iksharesorts.com" target="_blank" rel="noopener noreferrer"
                 data-testid="link-footer-website"
@@ -141,7 +136,7 @@ export default function Footer() {
               </a>
               <a href="https://maps.app.goo.gl/XhCxXD5n6sabVxYU9" target="_blank" rel="noopener noreferrer"
                 data-testid="link-footer-maps"
-                className="inline-flex items-center gap-2 mt-2 px-5 py-2.5 text-xs tracking-widest uppercase font-medium text-primary transition-all hover:opacity-90"
+                className="inline-flex items-center gap-2 mt-2 px-5 py-2.5 text-xs tracking-widest uppercase font-medium text-primary hover:opacity-90 transition-opacity"
                 style={{ background: "linear-gradient(135deg, #c9833a, #e09d55)", fontFamily: "'DM Sans', sans-serif" }}>
                 <MapPin size={13} />
                 Get Directions
@@ -150,13 +145,29 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-primary-foreground/35" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            &copy; 2025 KESRIKUNJ – Resort, Banquet and Garden. All rights reserved.
-          </p>
-          <p className="text-xs text-primary-foreground/25" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-            Managed by Iksha Resorts Pvt. Ltd. · Jharkhand Tourism
-          </p>
+        {/* Bottom bar */}
+        <div className="border-t border-white/10 pt-6 flex flex-col gap-2">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-2">
+            <p className="text-xs text-primary-foreground/35" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              &copy; 2025 KESRIKUNJ – Resort, Banquet and Garden. All rights reserved.
+            </p>
+            <p className="text-xs text-primary-foreground/25" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Managed by Iksha Resorts Pvt. Ltd. · Jharkhand Tourism
+            </p>
+          </div>
+          {/* Developer credit */}
+          <div className="flex items-center justify-center gap-2 pt-1 border-t border-white/5">
+            <p className="text-xs text-primary-foreground/30" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Designed &amp; Developed by
+            </p>
+            <a
+              href="tel:+919263838520"
+              className="text-xs font-semibold text-secondary/70 hover:text-secondary transition-colors"
+              style={{ fontFamily: "'DM Sans', sans-serif" }}
+            >
+              Jay Kashyap · +91 9263838520
+            </a>
+          </div>
         </div>
       </div>
     </footer>

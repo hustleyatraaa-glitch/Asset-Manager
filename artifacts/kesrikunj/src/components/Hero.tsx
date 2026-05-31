@@ -1,13 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Phone, Star, MapPin } from "lucide-react";
-import { WhatsAppIcon, FacebookIcon, InstagramIcon, JustDialIcon } from "./BrandIcons";
+import { WhatsAppIcon, FacebookIcon, JustDialIcon } from "./BrandIcons";
 
 const socialLinks = [
   { label: "WhatsApp", href: "https://wa.me/919155789484",                                                                                             icon: <WhatsAppIcon size={16} /> },
   { label: "Facebook", href: "https://www.facebook.com/iksharesorts/",                                                                                icon: <FacebookIcon size={16} /> },
-  { label: "Instagram", href: "https://www.instagram.com/iksha.in/",                                                                                  icon: <InstagramIcon size={16} /> },
-  { label: "JustDial", href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp", icon: <JustDialIcon size={16} /> },
+  { label: "JustDial", href: "https://jsdl.in/DT-99NNYKNWS5R",                                                                                       icon: <JustDialIcon size={16} /> },
 ];
 
 const heroImages = [
@@ -41,24 +40,30 @@ export default function Hero() {
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
       data-testid="section-hero"
     >
-      {/* Real photo slideshow */}
+      {/* Blurred photo slideshow */}
       <AnimatePresence mode="sync">
         <motion.div
           key={current}
-          initial={{ opacity: 0, scale: 1.04 }}
-          animate={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 1.06 }}
+          animate={{ opacity: 1, scale: 1.02 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
+          transition={{ duration: 1.4, ease: "easeInOut" }}
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroImages[current]})` }}
+          style={{
+            backgroundImage: `url(${heroImages[current]})`,
+            filter: "blur(3px)",
+            transform: "scale(1.07)",
+          }}
           aria-hidden="true"
         />
       </AnimatePresence>
 
-      {/* Dark gradient overlay */}
+      {/* Strong dark gradient overlay — ensures text always readable */}
       <div
         className="absolute inset-0"
-        style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 50%, rgba(0,0,0,0.72) 100%)" }}
+        style={{
+          background: "linear-gradient(to bottom, rgba(10,20,12,0.72) 0%, rgba(10,20,12,0.52) 45%, rgba(10,20,12,0.78) 100%)",
+        }}
         aria-hidden="true"
       />
 
@@ -70,17 +75,17 @@ export default function Hero() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="flex items-center gap-2 bg-black/35 backdrop-blur-sm border border-white/15 rounded-full px-4 py-2 mb-6"
+          className="flex items-center gap-2 bg-black/40 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6"
         >
           <div className="flex gap-0.5">
             {[1, 2, 3, 4].map(i => <Star key={i} size={11} className="fill-secondary text-secondary" />)}
             <Star size={11} className="text-secondary" />
           </div>
-          <span className="text-white/90 text-xs font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <span className="text-white text-xs font-semibold" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             4.0 Google Rating
           </span>
-          <span className="text-white/35 text-xs">·</span>
-          <span className="text-white/65 text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+          <span className="text-white/40 text-xs">·</span>
+          <span className="text-white/80 text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>
             129+ Reviews · #1 in Rajrappa
           </span>
         </motion.div>
@@ -90,7 +95,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="text-[2.6rem] sm:text-6xl md:text-7xl font-serif font-bold text-white leading-none tracking-tight mb-3"
+          className="text-[2.8rem] sm:text-6xl md:text-7xl font-serif font-bold text-white leading-none tracking-tight mb-3 drop-shadow-lg"
         >
           KESRIKUNJ
         </motion.h1>
@@ -99,7 +104,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.9 }}
-          className="text-base sm:text-lg font-serif italic text-white/80 mb-2"
+          className="text-base sm:text-lg font-serif italic text-white/90 mb-2 drop-shadow"
         >
           Resort, Banquet &amp; Garden
         </motion.p>
@@ -127,8 +132,8 @@ export default function Hero() {
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
             data-testid="button-call-now-hero"
-            className="flex items-center justify-center gap-2.5 px-8 py-4 text-sm tracking-widest uppercase font-bold text-white w-full sm:w-auto"
-            style={{ background: "linear-gradient(135deg, #c9833a, #e09d55)", boxShadow: "0 6px 24px rgba(201,131,58,0.5)", fontFamily: "'DM Sans', sans-serif" }}
+            className="flex items-center justify-center gap-2.5 px-8 py-4 text-sm tracking-widest uppercase font-bold text-white w-full sm:w-auto shadow-xl"
+            style={{ background: "linear-gradient(135deg, #c9833a, #e09d55)", boxShadow: "0 6px 28px rgba(201,131,58,0.6)", fontFamily: "'DM Sans', sans-serif" }}
           >
             <Phone size={16} />
             Call Now — Free
@@ -141,8 +146,8 @@ export default function Hero() {
             whileHover={{ scale: 1.04, y: -2 }}
             whileTap={{ scale: 0.97 }}
             data-testid="button-whatsapp-hero"
-            className="flex items-center justify-center gap-2.5 px-8 py-4 text-sm tracking-widest uppercase font-semibold text-white w-full sm:w-auto border border-white/25 backdrop-blur-sm hover:border-white/50 transition-colors"
-            style={{ background: "rgba(255,255,255,0.1)", fontFamily: "'DM Sans', sans-serif" }}
+            className="flex items-center justify-center gap-2.5 px-8 py-4 text-sm tracking-widest uppercase font-semibold text-white w-full sm:w-auto border-2 border-white/30 hover:border-white/60 transition-colors"
+            style={{ background: "rgba(255,255,255,0.12)", fontFamily: "'DM Sans', sans-serif" }}
           >
             <WhatsAppIcon size={17} />
             WhatsApp
@@ -154,11 +159,11 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 1.55 }}
-          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5"
+          className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2"
         >
           {quickFacts.map((fact, i) => (
-            <span key={fact} className="flex items-center gap-2 text-white/50 text-xs" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              {i > 0 && <span className="text-white/20 hidden sm:inline">·</span>}
+            <span key={fact} className="flex items-center gap-2 text-white/70 text-xs font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              {i > 0 && <span className="text-white/25 hidden sm:inline">·</span>}
               {fact}
             </span>
           ))}
@@ -172,7 +177,7 @@ export default function Hero() {
             key={i}
             onClick={() => setCurrent(i)}
             className="transition-all duration-300 rounded-full"
-            style={{ width: i === current ? "20px" : "6px", height: "6px", backgroundColor: i === current ? "#c9833a" : "rgba(255,255,255,0.4)" }}
+            style={{ width: i === current ? "20px" : "6px", height: "6px", backgroundColor: i === current ? "#c9833a" : "rgba(255,255,255,0.45)" }}
             aria-label={`Go to slide ${i + 1}`}
           />
         ))}
@@ -197,8 +202,8 @@ export default function Hero() {
               data-testid={`link-hero-${s.label.toLowerCase()}`}
               aria-label={s.label}
               title={s.label}
-              className="w-9 h-9 flex items-center justify-center rounded-full border border-white/15 hover:border-white/40 transition-all duration-300"
-              style={{ background: "rgba(0,0,0,0.35)" }}
+              className="w-9 h-9 flex items-center justify-center rounded-full border border-white/20 hover:border-white/50 transition-all duration-300"
+              style={{ background: "rgba(0,0,0,0.45)" }}
             >
               {s.icon}
             </motion.a>
@@ -211,7 +216,7 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 2 }}
           onClick={scrollToAbout}
           data-testid="button-scroll-down"
-          className="flex flex-col items-center gap-1 text-white/45 hover:text-white/75 transition-colors"
+          className="flex flex-col items-center gap-1 text-white/60 hover:text-white transition-colors"
           aria-label="Scroll down"
         >
           <span className="text-[9px] tracking-[0.22em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>Explore</span>
