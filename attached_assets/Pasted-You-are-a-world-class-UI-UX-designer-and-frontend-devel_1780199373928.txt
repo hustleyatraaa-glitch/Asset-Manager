@@ -1,0 +1,48 @@
+You are a world-class UI/UX designer and frontend developer. I want you to build a stunning, fully interactive, mobile-first website for a resort/banquet/restaurant in India called KESRIKUNJ – Resort, Banquet and Garden, located in Rajrappa, Jharkhand.
+Here is all the information about this place:
+Name: KESRIKUNJ – Resort, Banquet and Garden
+Address: Rajrappa Road, Rajrappa, Lerhitongri, Jharkhand – 829150
+Phone: +91 91557 89484 | +91 82403 09328
+Website: iksharesorts.com
+Google Rating: 4.0/5 (129+ reviews)
+Ranked #1 of 8 restaurants in Rajrappa
+About: Inaugurated on 24 February 2018 by the Chief Minister of Jharkhand. A Boutique Resort cum Hotel managed by Iksha Resorts Pvt. Ltd. in collaboration with Jharkhand Tourism. Located near Maa Chhinnamastike Temple (just 1 minute walk). Set amidst rivers, hills and lush greenery.
+Rooms (4 luxury rooms): Each AC room has huge glass windows, natural views, intercom, satellite TV, free WiFi, mini fridge, and kitchenette. Total 17 rooms including standard.
+Banquet & Events: Spacious banquet hall + lush green garden for — Weddings, Engagements, Mundan, Janehu, Corporate Meetings. Capacity: up to 150 guests. Outside decorators allowed, outside catering allowed, outside DJ permitted, parking available. Veg & non-veg cuisine.
+Social Links (use these as placeholders):
+
+WhatsApp: https://wa.me/919155789484
+Facebook: https://facebook.com/kesrikunj
+Instagram: https://instagram.com/kesrikunj
+
+Guest Reviews:
+
+⭐⭐⭐⭐⭐ "Best location, right beside the temple. Food quality and taste are quite good. Hot water 24x7. Very peaceful resort." — Verified Guest
+⭐⭐⭐⭐⭐ "Beautifully maintained property with a perfect mix of nature, comfort, and luxury. Rooms were spotless. Mr. Satyam Singh, the manager, went above and beyond." — Ravi D.
+⭐⭐⭐⭐ "Great place to stay at Mata Chhinnamastika's abode. Lush greenery, great amenities, provisions for marriage ceremonies. Vegetarian foods are exotic." — Debashis B.
+⭐⭐⭐⭐ "Thank you to Govt. of Jharkhand for this wonderful resort. Room service was great, bathrooms in great condition with geyser. Very peaceful with nature's beauty." — Verified Guest
+
+
+NOW BUILD THIS WEBSITE with the following requirements:
+
+Hero Section – Full-screen cinematic hero with the resort name, tagline ("Where Nature Meets Devotion"), an animated background (CSS gradient or layered mesh that feels like a forest at sunset — deep greens, warm ambers), and a floating CTA button "Book Now" that links to WhatsApp.
+Smooth Scroll Navigation – Sticky top navbar with resort name/logo on left, nav links (Home, About, Rooms, Gallery, Banquet, Reviews, Contact) on right. Hamburger menu on mobile. Active link highlight on scroll.
+About Section – Elegant two-column layout: left has beautiful text about the resort, right has animated stat cards (Year Est.: 2018, Rooms: 17, Capacity: 150 Guests, Rating: 4.0★). Animate stats counting up when scrolled into view.
+Rooms Section – Horizontal scroll card carousel (on mobile) or 3-column grid (on desktop). Each card has a gradient image placeholder (earthy tones), room name, key amenities icons (WiFi, AC, TV, Fridge), and a "View Room" hover effect that reveals more details.
+Gallery Section – Masonry/grid photo gallery with a lightbox effect on click. Use beautiful CSS-only image placeholders with gradient overlays in forest/earth tones. Label placeholders: "Garden View", "Banquet Hall", "Resort Exterior", "Room Interior", "Temple View", "Riverside".
+Banquet/Events Section – Showcase wedding & event services. Use animated event-type cards (Wedding, Engagement, Corporate, Religious Ceremony) with icons, hover glow effects, and event capacity/details.
+Reviews Section – Auto-sliding testimonial carousel with star ratings, guest name, review text, and smooth fade/slide animation. Pause on hover.
+Contact Section – Left: Contact info (phone with click-to-call, WhatsApp button, address). Right: Embedded Google Maps iframe for Rajrappa coordinates (23.631581, 85.709396). Below: Social media buttons (WhatsApp, Facebook, Instagram) with hover animations.
+Floating WhatsApp Button – Always-visible floating green WhatsApp button at bottom-right on all screens.
+Footer – Clean footer with resort name, quick links, social icons, and "© 2025 KESRIKUNJ. All rights reserved."
+
+Design Aesthetic:
+
+Color palette: Deep forest green (#1a3d2b), warm amber/gold (#c9833a), cream white (#f5f0e8), charcoal (#1e1e1e)
+Fonts: Use Google Fonts — 'Playfair Display' for headings, 'DM Sans' for body text
+Animations: Scroll-triggered fade-ins, smooth section transitions, hover lift effects on cards
+Style: Luxury nature resort — refined, warm, organic. NOT corporate, NOT generic.
+Mobile: 100% mobile responsive. Touch-friendly carousels. No horizontal scroll issues.
+Performance: Pure HTML + CSS + vanilla JS only. No frameworks. One single HTML file.
+
+Make it so extraordinary that no hotel in Jharkhand has ever had a website this beautiful. Every section should feel premium and alive. Show what a truly world-class resort website looks like.
