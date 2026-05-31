@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone, MapPin, MessageCircle, Facebook, Instagram } from "lucide-react";
+import { Phone, MapPin, MessageCircle, Facebook, Instagram, ExternalLink } from "lucide-react";
 
 export default function Contact() {
   const titleRef = useRef<HTMLDivElement>(null);
@@ -36,63 +36,52 @@ export default function Contact() {
           />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 mb-14">
+        <div className="grid md:grid-cols-2 gap-10 mb-10">
           {/* Left: Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col gap-6"
+            className="flex flex-col gap-5"
           >
             <h3 className="font-serif text-2xl font-bold text-primary">Reach Us</h3>
             <p className="text-muted-foreground text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              Whether you're planning a stay, booking an event, or simply have questions — we're here to help.
-              Call us or drop a message on WhatsApp.
+              Planning a stay, booking an event, or need directions? Call us directly or drop a message on WhatsApp — we respond fast.
             </p>
 
-            <div className="space-y-4">
-              <a
-                href="tel:+919155789484"
-                data-testid="link-phone-1"
-                className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group"
-              >
+            <div className="space-y-3">
+              <a href="tel:+919155789484" data-testid="link-phone-1"
+                className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all duration-300">
                   <Phone size={18} />
                 </div>
                 <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Call Us</div>
-                  <div className="font-medium text-foreground">+91 91557 89484</div>
+                  <div className="font-semibold text-foreground">+91 91557 89484</div>
                 </div>
               </a>
 
-              <a
-                href="tel:+918240309328"
-                data-testid="link-phone-2"
-                className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group"
-              >
+              <a href="tel:+918240309328" data-testid="link-phone-2"
+                className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all duration-300">
                   <Phone size={18} />
                 </div>
                 <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Alternate</div>
-                  <div className="font-medium text-foreground">+91 82403 09328</div>
+                  <div className="font-semibold text-foreground">+91 82403 09328</div>
                 </div>
               </a>
 
-              <a
-                href="https://wa.me/919155789484"
-                target="_blank"
-                rel="noopener noreferrer"
+              <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer"
                 data-testid="link-whatsapp"
-                className="flex items-center gap-4 p-4 border border-border hover:border-green-500 hover:bg-green-50 transition-all duration-300 group"
-              >
+                className="flex items-center gap-4 p-4 border border-border hover:border-green-500 hover:bg-green-50 transition-all duration-300 group">
                 <div className="w-11 h-11 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
                   <MessageCircle size={18} />
                 </div>
                 <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
                   <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">WhatsApp</div>
-                  <div className="font-medium text-foreground">Send a Message</div>
+                  <div className="font-semibold text-foreground">Send a Message</div>
                 </div>
               </a>
 
@@ -106,51 +95,40 @@ export default function Contact() {
                     Rajrappa Road, Rajrappa<br />
                     Lerhitongri, Jharkhand – 829150
                   </div>
+                  <a
+                    href="https://maps.app.goo.gl/ugMdqA5xpWgcgSPZ9"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="link-get-directions"
+                    className="inline-flex items-center gap-1 text-xs text-secondary hover:underline mt-1.5"
+                  >
+                    Get Directions <ExternalLink size={11} />
+                  </a>
                 </div>
               </div>
             </div>
 
             {/* Social */}
             <div>
-              <div className="text-xs tracking-widest uppercase text-muted-foreground mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                Follow Us
-              </div>
+              <div className="text-xs tracking-widest uppercase text-muted-foreground mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>Follow Us</div>
               <div className="flex gap-3">
-                <a
-                  href="https://wa.me/919155789484"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="link-social-whatsapp"
-                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-green-500 hover:text-white hover:border-green-500 transition-all duration-300"
-                  aria-label="WhatsApp"
-                >
+                <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer" data-testid="link-social-whatsapp"
+                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-green-500 hover:text-white hover:border-green-500 transition-all duration-300" aria-label="WhatsApp">
                   <MessageCircle size={18} />
                 </a>
-                <a
-                  href="https://facebook.com/kesrikunj"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="link-social-facebook"
-                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300"
-                  aria-label="Facebook"
-                >
+                <a href="https://facebook.com/kesrikunj" target="_blank" rel="noopener noreferrer" data-testid="link-social-facebook"
+                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300" aria-label="Facebook">
                   <Facebook size={18} />
                 </a>
-                <a
-                  href="https://instagram.com/kesrikunj"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="link-social-instagram"
-                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-gradient-to-br hover:from-purple-500 hover:to-pink-500 hover:text-white hover:border-pink-400 transition-all duration-300"
-                  aria-label="Instagram"
-                >
+                <a href="https://instagram.com/kesrikunj" target="_blank" rel="noopener noreferrer" data-testid="link-social-instagram"
+                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-pink-500 hover:text-white hover:border-pink-400 transition-all duration-300" aria-label="Instagram">
                   <Instagram size={18} />
                 </a>
               </div>
             </div>
           </motion.div>
 
-          {/* Right: Map */}
+          {/* Right: Real Google Map */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -160,17 +138,36 @@ export default function Contact() {
             data-testid="embed-map"
           >
             <iframe
-              title="KESRIKUNJ Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.3!2d85.709396!3d23.631581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDM3JzUzLjciTiA4NcKwNDInMzMuOCJF!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
+              title="KESRIKUNJ Location — Rajrappa"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1!2d85.70600!3d23.63320!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e8a1d3bfffff%3A0x6b2c2c2c2c2c2c2c!2sKesrikunj%20Resort%2C%20Banquet%20%26%20Garden!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: "380px" }}
+              style={{ border: 0, minHeight: "420px" }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
           </motion.div>
         </div>
+
+        {/* Directions CTA banner */}
+        <motion.a
+          href="https://maps.app.goo.gl/ugMdqA5xpWgcgSPZ9"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-testid="button-directions-banner"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="flex items-center justify-center gap-3 w-full py-4 border border-primary/30 bg-primary/5 hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+        >
+          <MapPin size={17} className="text-primary group-hover:text-primary-foreground" />
+          <span className="text-sm font-medium tracking-wide text-primary group-hover:text-primary-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            Open in Google Maps — Get Directions to KESRIKUNJ
+          </span>
+          <ExternalLink size={14} className="text-primary group-hover:text-primary-foreground" />
+        </motion.a>
       </div>
     </section>
   );

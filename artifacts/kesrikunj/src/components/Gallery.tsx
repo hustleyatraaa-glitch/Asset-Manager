@@ -1,56 +1,19 @@
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
+
+const BASE = import.meta.env.BASE_URL;
 
 const galleryItems = [
-  {
-    id: "garden",
-    label: "Garden View",
-    gradient: "linear-gradient(135deg, #1a4d2e 0%, #2d7a4a 40%, #4a9c6a 100%)",
-    accentGradient: "linear-gradient(135deg, #1a3d2b 0%, #52a36b 100%)",
-    colSpan: "md:col-span-2",
-    rowSpan: "md:row-span-2",
-  },
-  {
-    id: "banquet",
-    label: "Banquet Hall",
-    gradient: "linear-gradient(135deg, #3d2e1a 0%, #7a5c2d 40%, #c9a050 100%)",
-    accentGradient: "linear-gradient(135deg, #2e1a0a 0%, #c9833a 100%)",
-    colSpan: "",
-    rowSpan: "",
-  },
-  {
-    id: "exterior",
-    label: "Resort Exterior",
-    gradient: "linear-gradient(135deg, #1a2e3d 0%, #2d4a7a 40%, #5080b0 100%)",
-    accentGradient: "linear-gradient(135deg, #1a3d2b 0%, #3a6a8a 100%)",
-    colSpan: "",
-    rowSpan: "",
-  },
-  {
-    id: "interior",
-    label: "Room Interior",
-    gradient: "linear-gradient(135deg, #2e1a1a 0%, #6a3a2d 40%, #b07050 100%)",
-    accentGradient: "linear-gradient(135deg, #3d1a0a 0%, #9a5a40 100%)",
-    colSpan: "",
-    rowSpan: "",
-  },
-  {
-    id: "temple",
-    label: "Temple View",
-    gradient: "linear-gradient(135deg, #2d1a3d 0%, #5a2d7a 40%, #9050b0 100%)",
-    accentGradient: "linear-gradient(135deg, #3d1a2b 0%, #7a3a8a 100%)",
-    colSpan: "",
-    rowSpan: "",
-  },
-  {
-    id: "riverside",
-    label: "Riverside",
-    gradient: "linear-gradient(135deg, #1a3d3d 0%, #2d7a7a 40%, #50b0b0 100%)",
-    accentGradient: "linear-gradient(135deg, #0a2e3d 0%, #3a8a8a 100%)",
-    colSpan: "md:col-span-2",
-    rowSpan: "",
-  },
+  { id: "g1",  label: "Resort Exterior",  src: `${BASE}photos/hero1.jpg`,    colSpan: "md:col-span-2", rowSpan: "md:row-span-2" },
+  { id: "g2",  label: "Banquet Hall",     src: `${BASE}photos/gallery1b.jpg`, colSpan: "",              rowSpan: "" },
+  { id: "g3",  label: "Garden View",      src: `${BASE}photos/gallery2b.jpg`, colSpan: "",              rowSpan: "" },
+  { id: "g4",  label: "Resort Grounds",   src: `${BASE}photos/gallery3b.jpg`, colSpan: "",              rowSpan: "" },
+  { id: "g5",  label: "Scenic View",      src: `${BASE}photos/gallery7.jpg`,  colSpan: "",              rowSpan: "" },
+  { id: "g6",  label: "Riverside",        src: `${BASE}photos/hero2.jpg`,     colSpan: "md:col-span-2", rowSpan: "" },
+  { id: "g7",  label: "Nature Trail",     src: `${BASE}photos/hero3.jpg`,     colSpan: "",              rowSpan: "" },
+  { id: "g8",  label: "Temple Vicinity",  src: `${BASE}photos/gallery8.jpg`,  colSpan: "",              rowSpan: "" },
+  { id: "g9",  label: "Resort at Dusk",   src: `${BASE}photos/hero4.jpg`,     colSpan: "",              rowSpan: "" },
 ];
 
 export default function Gallery() {
@@ -60,10 +23,8 @@ export default function Gallery() {
 
   const openLightbox = (i: number) => setLightboxIndex(i);
   const closeLightbox = () => setLightboxIndex(null);
-  const prev = () =>
-    setLightboxIndex((i) => (i === null ? null : (i - 1 + galleryItems.length) % galleryItems.length));
-  const next = () =>
-    setLightboxIndex((i) => (i === null ? null : (i + 1) % galleryItems.length));
+  const prev = () => setLightboxIndex((i) => (i === null ? null : (i - 1 + galleryItems.length) % galleryItems.length));
+  const next = () => setLightboxIndex((i) => (i === null ? null : (i + 1) % galleryItems.length));
 
   return (
     <section id="gallery" className="py-24 md:py-32 bg-background" data-testid="section-gallery">
@@ -95,34 +56,32 @@ export default function Gallery() {
           />
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[180px] md:auto-rows-[220px] gap-3">
+        <div className="grid grid-cols-2 md:grid-cols-4 auto-rows-[160px] md:auto-rows-[200px] gap-2.5">
           {galleryItems.map((item, i) => (
             <motion.button
               key={item.id}
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.96 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.07 }}
-              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
               onClick={() => openLightbox(i)}
               data-testid={`button-gallery-${item.id}`}
-              className={`relative overflow-hidden cursor-pointer rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${item.colSpan} ${item.rowSpan}`}
+              className={`group relative overflow-hidden rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-secondary ${item.colSpan} ${item.rowSpan}`}
               aria-label={`View ${item.label}`}
             >
-              <div
-                className="absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-                style={{ background: item.gradient }}
+              <img
+                src={item.src}
+                alt={item.label}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
+                loading="lazy"
               />
-              <div className="absolute inset-0 opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iMjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA4KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9zdmc+')]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-left">
-                <div
-                  className="text-white font-serif text-lg font-semibold drop-shadow"
-                >
-                  {item.label}
-                </div>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                <ZoomIn size={24} className="text-white opacity-0 group-hover:opacity-80 transition-opacity duration-300" />
               </div>
-              <div className="absolute inset-0 bg-secondary/0 hover:bg-secondary/10 transition-colors duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 p-3 text-left">
+                <div className="text-white font-serif text-sm font-semibold drop-shadow">{item.label}</div>
+              </div>
             </motion.button>
           ))}
         </div>
@@ -135,8 +94,8 @@ export default function Gallery() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/92 backdrop-blur-sm"
             onClick={closeLightbox}
             data-testid="modal-lightbox"
           >
@@ -144,48 +103,32 @@ export default function Gallery() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="relative w-[90vw] max-w-2xl aspect-[4/3] rounded-sm overflow-hidden shadow-2xl"
+              transition={{ duration: 0.25 }}
+              className="relative max-w-4xl max-h-[85vh] w-[92vw] rounded-sm overflow-hidden shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <div
-                className="absolute inset-0"
-                style={{ background: galleryItems[lightboxIndex].accentGradient }}
+              <img
+                src={galleryItems[lightboxIndex].src}
+                alt={galleryItems[lightboxIndex].label}
+                className="w-full h-full object-cover max-h-[85vh]"
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-white/20 font-serif text-8xl font-bold italic select-none">
-                  {galleryItems[lightboxIndex].label[0]}
-                </div>
-              </div>
-              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
-                <div className="text-white font-serif text-2xl font-bold">
+              <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/70 to-transparent">
+                <div className="text-white font-serif text-xl font-bold">
                   {galleryItems[lightboxIndex].label}
                 </div>
               </div>
             </motion.div>
 
-            <button
-              onClick={(e) => { e.stopPropagation(); prev(); }}
-              data-testid="button-lightbox-prev"
-              className="absolute left-4 md:left-8 text-white/70 hover:text-white bg-black/30 hover:bg-black/50 w-12 h-12 flex items-center justify-center rounded-full transition-all"
-              aria-label="Previous image"
-            >
+            <button onClick={(e) => { e.stopPropagation(); prev(); }} data-testid="button-lightbox-prev"
+              className="absolute left-3 md:left-8 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 w-12 h-12 flex items-center justify-center rounded-full transition-all" aria-label="Previous">
               <ChevronLeft size={24} />
             </button>
-            <button
-              onClick={(e) => { e.stopPropagation(); next(); }}
-              data-testid="button-lightbox-next"
-              className="absolute right-4 md:right-8 text-white/70 hover:text-white bg-black/30 hover:bg-black/50 w-12 h-12 flex items-center justify-center rounded-full transition-all"
-              aria-label="Next image"
-            >
+            <button onClick={(e) => { e.stopPropagation(); next(); }} data-testid="button-lightbox-next"
+              className="absolute right-3 md:right-8 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 w-12 h-12 flex items-center justify-center rounded-full transition-all" aria-label="Next">
               <ChevronRight size={24} />
             </button>
-            <button
-              onClick={closeLightbox}
-              data-testid="button-lightbox-close"
-              className="absolute top-4 right-4 text-white/70 hover:text-white bg-black/30 hover:bg-black/50 w-10 h-10 flex items-center justify-center rounded-full transition-all"
-              aria-label="Close lightbox"
-            >
+            <button onClick={closeLightbox} data-testid="button-lightbox-close"
+              className="absolute top-4 right-4 text-white/70 hover:text-white bg-black/30 hover:bg-black/60 w-10 h-10 flex items-center justify-center rounded-full transition-all" aria-label="Close">
               <X size={18} />
             </button>
           </motion.div>
