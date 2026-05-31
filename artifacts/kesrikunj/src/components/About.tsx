@@ -73,7 +73,7 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-background" data-testid="section-about">
+    <section id="about" className="py-12 md:py-24 bg-background" data-testid="section-about">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-16 items-start">
           {/* Left: Text */}

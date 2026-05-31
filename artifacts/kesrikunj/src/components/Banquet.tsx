@@ -46,7 +46,7 @@ export default function Banquet() {
   const inView = useInView(titleRef, { once: true, margin: "-80px" });
 
   return (
-    <section id="banquet" className="py-24 md:py-32 bg-primary text-primary-foreground relative overflow-hidden" data-testid="section-banquet">
+    <section id="banquet" className="py-12 md:py-24 bg-primary text-primary-foreground relative overflow-hidden" data-testid="section-banquet">
       {/* Background pattern */}
       <div
         className="absolute inset-0 opacity-5"

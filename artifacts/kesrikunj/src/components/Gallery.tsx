@@ -27,7 +27,7 @@ export default function Gallery() {
   const next = () => setLightboxIndex((i) => (i === null ? null : (i + 1) % galleryItems.length));
 
   return (
-    <section id="gallery" className="py-24 md:py-32 bg-background" data-testid="section-gallery">
+    <section id="gallery" className="py-12 md:py-24 bg-background" data-testid="section-gallery">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
         <div ref={titleRef} className="text-center mb-14">
           <motion.div
