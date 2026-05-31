@@ -1,6 +1,45 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Phone, MapPin, MessageCircle, Facebook, Instagram, ExternalLink } from "lucide-react";
+import { Phone, MapPin, MessageCircle, Facebook, Instagram, ExternalLink, Globe, Mail, Star } from "lucide-react";
+
+const platforms = [
+  {
+    name: "TripAdvisor",
+    desc: "Hotel reviews",
+    href: "https://www.tripadvisor.in/Hotel_Review-g33076531-d33074220-Reviews-Rajrappa_Hotel_And_Banquet_Hall-Lerhitongri_Ramgarh_District_Jharkhand.html",
+    color: "#00aa6c",
+  },
+  {
+    name: "WedMeGood",
+    desc: "Wedding venue",
+    href: "https://www.wedmegood.com/wedding-venues/Rajrappa-Hotel-and-Banquet-Hall-25705812",
+    color: "#e63962",
+  },
+  {
+    name: "JustDial — Resort",
+    desc: "Resort listing",
+    href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp",
+    color: "#ff6600",
+  },
+  {
+    name: "JustDial — Banquet",
+    desc: "Banquet listing",
+    href: "https://www.justdial.com/Ramgarh-Jharkhand/Kesrikunj-Royals-Banquet-And-Garden-Rajrappa/9999P6553-6553-190825224443-D6W7_BZDET",
+    color: "#ff6600",
+  },
+  {
+    name: "Restaurant Guru",
+    desc: "Food & dining",
+    href: "https://restaurant-guru.in/KESRIKUNJ-Resort-Banquet-and-Garden-Rajrappa-2",
+    color: "#f4a c00",
+  },
+  {
+    name: "MenuList",
+    desc: "Full menu",
+    href: "https://menulist.menu/restaurants/lerhitongri/kesrikunj-resort-banquet-and-garden",
+    color: "#2c7be5",
+  },
+];
 
 export default function Contact() {
   const titleRef = useRef<HTMLDivElement>(null);
@@ -9,7 +48,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-12 md:py-24 bg-background" data-testid="section-contact">
       <div className="container mx-auto px-4 md:px-8 max-w-6xl">
-        <div ref={titleRef} className="text-center mb-16">
+        <div ref={titleRef} className="text-center mb-12">
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -23,7 +62,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="text-4xl md:text-5xl font-serif font-bold text-primary mb-4"
+            className="text-3xl md:text-5xl font-serif font-bold text-primary mb-4"
           >
             Contact &amp; Location
           </motion.h2>
@@ -36,99 +75,109 @@ export default function Contact() {
           />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10 mb-10">
+        <div className="grid md:grid-cols-2 gap-8 mb-8">
           {/* Left: Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-3"
           >
-            <h3 className="font-serif text-2xl font-bold text-primary">Reach Us</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              Planning a stay, booking an event, or need directions? Call us directly or drop a message on WhatsApp — we respond fast.
-            </p>
+            <h3 className="font-serif text-xl font-bold text-primary mb-1">Reach Us</h3>
 
-            <div className="space-y-3">
-              <a href="tel:+919155789484" data-testid="link-phone-1"
-                className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group">
-                <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all duration-300">
-                  <Phone size={18} />
-                </div>
-                <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Call Us</div>
-                  <div className="font-semibold text-foreground">+91 91557 89484</div>
-                </div>
-              </a>
+            <a href="tel:+919155789484" data-testid="link-phone-1"
+              className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all duration-300 shrink-0">
+                <Phone size={17} />
+              </div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Call / WhatsApp</div>
+                <div className="font-semibold text-foreground">+91 91557 89484</div>
+              </div>
+            </a>
 
-              <a href="tel:+918240309328" data-testid="link-phone-2"
-                className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group">
-                <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all duration-300">
-                  <Phone size={18} />
-                </div>
-                <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Alternate</div>
-                  <div className="font-semibold text-foreground">+91 82403 09328</div>
-                </div>
-              </a>
+            <a href="tel:+918240309328" data-testid="link-phone-2"
+              className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all duration-300 shrink-0">
+                <Phone size={17} />
+              </div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Alternate</div>
+                <div className="font-semibold text-foreground">+91 82403 09328</div>
+              </div>
+            </a>
 
-              <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer"
-                data-testid="link-whatsapp"
-                className="flex items-center gap-4 p-4 border border-border hover:border-green-500 hover:bg-green-50 transition-all duration-300 group">
-                <div className="w-11 h-11 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-                  <MessageCircle size={18} />
-                </div>
-                <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">WhatsApp</div>
-                  <div className="font-semibold text-foreground">Send a Message</div>
-                </div>
-              </a>
+            <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer"
+              data-testid="link-whatsapp"
+              className="flex items-center gap-4 p-4 border border-border hover:border-green-500 hover:bg-green-50 transition-all duration-300 group">
+              <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 group-hover:bg-green-500 group-hover:text-white transition-all duration-300 shrink-0">
+                <MessageCircle size={17} />
+              </div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">WhatsApp</div>
+                <div className="font-semibold text-foreground">wa.me/919155789484</div>
+              </div>
+            </a>
 
-              <div className="flex items-start gap-4 p-4 border border-border">
-                <div className="w-11 h-11 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
-                  <MapPin size={18} />
+            <a href="mailto:iksharesorts@gmail.com" data-testid="link-email"
+              className="flex items-center gap-4 p-4 border border-border hover:border-secondary hover:bg-secondary/5 transition-all duration-300 group">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-secondary group-hover:text-white transition-all duration-300 shrink-0">
+                <Mail size={17} />
+              </div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Email</div>
+                <div className="font-semibold text-foreground">iksharesorts@gmail.com</div>
+              </div>
+            </a>
+
+            <div className="flex items-start gap-4 p-4 border border-border">
+              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary shrink-0">
+                <MapPin size={17} />
+              </div>
+              <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Address</div>
+                <div className="font-medium text-foreground text-sm leading-relaxed">
+                  Rajrappa Road, Rajrappa<br />
+                  Lerhitongri, Jharkhand – 829150
                 </div>
-                <div style={{ fontFamily: "'DM Sans', sans-serif" }}>
-                  <div className="text-xs text-muted-foreground mb-0.5 tracking-wide uppercase">Address</div>
-                  <div className="font-medium text-foreground text-sm leading-relaxed">
-                    Rajrappa Road, Rajrappa<br />
-                    Lerhitongri, Jharkhand – 829150
-                  </div>
-                  <a
-                    href="https://maps.app.goo.gl/ugMdqA5xpWgcgSPZ9"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-testid="link-get-directions"
-                    className="inline-flex items-center gap-1 text-xs text-secondary hover:underline mt-1.5"
-                  >
-                    Get Directions <ExternalLink size={11} />
-                  </a>
-                </div>
+                <a
+                  href="https://maps.app.goo.gl/XhCxXD5n6sabVxYU9"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-get-directions"
+                  className="inline-flex items-center gap-1 text-xs text-secondary hover:underline mt-1.5"
+                >
+                  Get Directions <ExternalLink size={11} />
+                </a>
               </div>
             </div>
 
-            {/* Social */}
+            {/* Social row */}
             <div>
-              <div className="text-xs tracking-widest uppercase text-muted-foreground mb-4" style={{ fontFamily: "'DM Sans', sans-serif" }}>Follow Us</div>
-              <div className="flex gap-3">
+              <div className="text-xs tracking-widest uppercase text-muted-foreground mb-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>Follow Us</div>
+              <div className="flex gap-2 flex-wrap">
                 <a href="https://wa.me/919155789484" target="_blank" rel="noopener noreferrer" data-testid="link-social-whatsapp"
-                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-green-500 hover:text-white hover:border-green-500 transition-all duration-300" aria-label="WhatsApp">
-                  <MessageCircle size={18} />
+                  className="flex items-center gap-1.5 px-3 py-2 border border-border text-xs text-muted-foreground hover:bg-green-500 hover:text-white hover:border-green-500 transition-all" aria-label="WhatsApp">
+                  <MessageCircle size={14} /> WhatsApp
                 </a>
-                <a href="https://facebook.com/kesrikunj" target="_blank" rel="noopener noreferrer" data-testid="link-social-facebook"
-                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all duration-300" aria-label="Facebook">
-                  <Facebook size={18} />
+                <a href="https://www.facebook.com/iksharesorts/" target="_blank" rel="noopener noreferrer" data-testid="link-social-facebook"
+                  className="flex items-center gap-1.5 px-3 py-2 border border-border text-xs text-muted-foreground hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all" aria-label="Facebook">
+                  <Facebook size={14} /> Facebook
                 </a>
-                <a href="https://instagram.com/kesrikunj" target="_blank" rel="noopener noreferrer" data-testid="link-social-instagram"
-                  className="w-10 h-10 flex items-center justify-center border border-border text-muted-foreground hover:bg-pink-500 hover:text-white hover:border-pink-400 transition-all duration-300" aria-label="Instagram">
-                  <Instagram size={18} />
+                <a href="https://www.instagram.com/iksha.in/" target="_blank" rel="noopener noreferrer" data-testid="link-social-instagram"
+                  className="flex items-center gap-1.5 px-3 py-2 border border-border text-xs text-muted-foreground hover:bg-pink-500 hover:text-white hover:border-pink-500 transition-all" aria-label="Instagram">
+                  <Instagram size={14} /> Instagram
+                </a>
+                <a href="https://www.iksharesorts.com" target="_blank" rel="noopener noreferrer" data-testid="link-social-website"
+                  className="flex items-center gap-1.5 px-3 py-2 border border-border text-xs text-muted-foreground hover:bg-primary hover:text-white hover:border-primary transition-all" aria-label="Website">
+                  <Globe size={14} /> Website
                 </a>
               </div>
             </div>
           </motion.div>
 
-          {/* Right: Real Google Map */}
+          {/* Right: Google Map */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -142,7 +191,7 @@ export default function Contact() {
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.1!2d85.70600!3d23.63320!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f4e8a1d3bfffff%3A0x6b2c2c2c2c2c2c2c!2sKesrikunj%20Resort%2C%20Banquet%20%26%20Garden!5e0!3m2!1sen!2sin!4v1680000000000!5m2!1sen!2sin"
               width="100%"
               height="100%"
-              style={{ border: 0, minHeight: "420px" }}
+              style={{ border: 0, minHeight: "380px" }}
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
@@ -150,9 +199,9 @@ export default function Contact() {
           </motion.div>
         </div>
 
-        {/* Directions CTA banner */}
+        {/* Directions CTA */}
         <motion.a
-          href="https://maps.app.goo.gl/ugMdqA5xpWgcgSPZ9"
+          href="https://maps.app.goo.gl/XhCxXD5n6sabVxYU9"
           target="_blank"
           rel="noopener noreferrer"
           data-testid="button-directions-banner"
@@ -160,7 +209,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex items-center justify-center gap-3 w-full py-4 border border-primary/30 bg-primary/5 hover:bg-primary hover:text-primary-foreground transition-all duration-300 group"
+          className="flex items-center justify-center gap-3 w-full py-4 border border-primary/30 bg-primary/5 hover:bg-primary hover:text-primary-foreground transition-all duration-300 group mb-10"
         >
           <MapPin size={17} className="text-primary group-hover:text-primary-foreground" />
           <span className="text-sm font-medium tracking-wide text-primary group-hover:text-primary-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
@@ -168,6 +217,38 @@ export default function Contact() {
           </span>
           <ExternalLink size={14} className="text-primary group-hover:text-primary-foreground" />
         </motion.a>
+
+        {/* Find Us Online — platform listings */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4 text-center font-medium" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            Find Us Online
+          </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+            {platforms.map((p) => (
+              <a
+                key={p.name}
+                href={p.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid={`link-platform-${p.name.toLowerCase().replace(/\s+/g, "-")}`}
+                className="flex flex-col items-center gap-1.5 p-3 border border-border rounded-sm hover:shadow-md transition-all duration-200 hover:border-secondary/40 group text-center"
+              >
+                <Star size={14} className="text-secondary" />
+                <span className="text-xs font-semibold text-foreground/80 leading-tight group-hover:text-primary" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {p.name}
+                </span>
+                <span className="text-[10px] text-muted-foreground" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                  {p.desc}
+                </span>
+              </a>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

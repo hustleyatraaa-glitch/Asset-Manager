@@ -11,10 +11,10 @@ function JustDialIcon() {
 }
 
 const socialLinks = [
-  { label: "WhatsApp", href: "https://wa.me/919155789484",                       icon: <MessageCircle size={15} /> },
-  { label: "Facebook", href: "https://facebook.com/kesrikunj",                   icon: <Facebook size={15} /> },
-  { label: "Maps",     href: "https://maps.app.goo.gl/ugMdqA5xpWgcgSPZ9",       icon: <Map size={15} /> },
-  { label: "JustDial", href: "https://www.justdial.com/Ranchi/Kesrikunj-Resort-Banquet-Garden-Rajrappa/0654PX654-X654-180928203542-N7X5_BZDET", icon: <JustDialIcon /> },
+  { label: "WhatsApp", href: "https://wa.me/919155789484",                                                                                                                       icon: <MessageCircle size={15} /> },
+  { label: "Facebook", href: "https://www.facebook.com/iksharesorts/",                                                                                                          icon: <Facebook size={15} /> },
+  { label: "Maps",     href: "https://maps.app.goo.gl/XhCxXD5n6sabVxYU9",                                                                                                      icon: <Map size={15} /> },
+  { label: "JustDial", href: "https://www.justdial.com/Ramgarh-Jharkhand/Iksha-Resorts-Pvt-Ltd-Rajrappa/9999P6553-6553-240813221522-D1U7_BZDET/amp", icon: <JustDialIcon /> },
 ];
 
 const heroImages = [
