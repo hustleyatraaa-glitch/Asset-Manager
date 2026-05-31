@@ -1,6 +1,42 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ChevronDown, MessageCircle } from "lucide-react";
+import { ChevronDown, Phone, MessageCircle, Facebook, Map } from "lucide-react";
+
+function JustDialIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect width="40" height="40" rx="20" fill="currentColor" fillOpacity="0" />
+      <text x="50%" y="55%" dominantBaseline="middle" textAnchor="middle" fill="currentColor" fontSize="13" fontWeight="bold" fontFamily="sans-serif">JD</text>
+    </svg>
+  );
+}
+
+const socialLinks = [
+  {
+    label: "WhatsApp",
+    href: "https://wa.me/919155789484",
+    icon: <MessageCircle size={18} />,
+    color: "#25d366",
+  },
+  {
+    label: "Facebook",
+    href: "https://facebook.com/kesrikunj",
+    icon: <Facebook size={18} />,
+    color: "#1877f2",
+  },
+  {
+    label: "Maps",
+    href: "https://maps.google.com/?q=23.631581,85.709396",
+    icon: <Map size={18} />,
+    color: "#ea4335",
+  },
+  {
+    label: "JustDial",
+    href: "https://www.justdial.com/Ranchi/Kesrikunj-Resort-Banquet-Garden-Rajrappa/0654PX654-X654-180928203542-N7X5_BZDET",
+    icon: <JustDialIcon />,
+    color: "#ff6900",
+  },
+];
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -70,23 +106,18 @@ export default function Hero() {
       className="relative flex min-h-screen items-center justify-center overflow-hidden"
       data-testid="section-hero"
     >
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-        aria-hidden="true"
-      />
+      <canvas ref={canvasRef} className="absolute inset-0 w-full h-full" aria-hidden="true" />
+      <div className="absolute inset-0 bg-black/35" aria-hidden="true" />
 
-      <div className="absolute inset-0 bg-black/30" aria-hidden="true" />
-
-      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-5xl mx-auto">
+      <div className="relative z-10 flex flex-col items-center text-center px-5 max-w-5xl mx-auto w-full">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.2 }}
-          className="mb-6"
+          className="mb-5"
         >
           <div
-            className="inline-block border border-secondary/60 px-6 py-2 text-xs tracking-[0.25em] uppercase text-secondary mb-6"
+            className="inline-block border border-secondary/60 px-5 py-1.5 text-xs tracking-[0.22em] uppercase text-secondary"
             style={{ fontFamily: "'DM Sans', sans-serif" }}
           >
             Rajrappa, Jharkhand
@@ -97,7 +128,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.4 }}
-          className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-tight tracking-tight mb-4"
+          className="text-[2.8rem] sm:text-6xl md:text-7xl lg:text-8xl font-serif font-bold text-white leading-tight tracking-tight mb-4"
         >
           KESRIKUNJ
         </motion.h1>
@@ -106,7 +137,7 @@ export default function Hero() {
           initial={{ opacity: 0, scaleX: 0 }}
           animate={{ opacity: 1, scaleX: 1 }}
           transition={{ duration: 0.8, delay: 1 }}
-          className="w-24 h-0.5 mb-6"
+          className="w-20 h-0.5 mb-5"
           style={{ backgroundColor: "#c9833a" }}
         />
 
@@ -114,7 +145,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.1 }}
-          className="text-xl md:text-3xl font-serif italic text-white/90 mb-4 tracking-wide"
+          className="text-lg sm:text-2xl md:text-3xl font-serif italic text-white/90 mb-3 tracking-wide"
         >
           Where Nature Meets Devotion
         </motion.p>
@@ -123,52 +154,105 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1.4 }}
-          className="text-sm md:text-base text-white/70 mb-12 max-w-xl tracking-wide"
+          className="text-sm md:text-base text-white/70 mb-10 max-w-sm md:max-w-xl tracking-wide leading-relaxed"
           style={{ fontFamily: "'DM Sans', sans-serif" }}
         >
-          Resort, Banquet &amp; Garden — One minute from Maa Chhinnamastike Temple
+          Resort, Banquet &amp; Garden &mdash; एक मिनट की दूरी पर माँ छिन्नमस्तिके मंदिर
         </motion.p>
 
-        <motion.a
-          href="https://wa.me/919155789484"
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* CTA Buttons */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.6 }}
-          whileHover={{ scale: 1.05, y: -2 }}
-          whileTap={{ scale: 0.97 }}
-          data-testid="button-book-now"
-          className="flex items-center gap-3 px-10 py-4 text-sm tracking-[0.2em] uppercase font-medium text-white shadow-2xl transition-all duration-300"
-          style={{
-            background: "linear-gradient(135deg, #c9833a, #e09d55)",
-            boxShadow: "0 8px 32px rgba(201, 131, 58, 0.4)",
-          }}
+          className="flex flex-col sm:flex-row items-center gap-4 mb-14"
         >
-          <MessageCircle size={18} />
-          Book Now
-        </motion.a>
+          <motion.a
+            href="tel:+919155789484"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            data-testid="button-call-now-hero"
+            className="flex items-center gap-3 px-8 py-4 text-sm tracking-[0.18em] uppercase font-semibold text-white shadow-2xl transition-all duration-300 w-full sm:w-auto justify-center"
+            style={{
+              background: "linear-gradient(135deg, #1a3d2b, #2d6a4a)",
+              boxShadow: "0 8px 32px rgba(26, 61, 43, 0.5)",
+              fontFamily: "'DM Sans', sans-serif",
+            }}
+          >
+            <Phone size={18} />
+            Call Now
+          </motion.a>
+          <motion.a
+            href="https://wa.me/919155789484"
+            target="_blank"
+            rel="noopener noreferrer"
+            whileHover={{ scale: 1.05, y: -2 }}
+            whileTap={{ scale: 0.97 }}
+            data-testid="button-whatsapp-hero"
+            className="flex items-center gap-3 px-8 py-4 text-sm tracking-[0.18em] uppercase font-semibold text-white shadow-2xl transition-all duration-300 w-full sm:w-auto justify-center border border-white/30 backdrop-blur-sm"
+            style={{
+              background: "rgba(255,255,255,0.1)",
+              fontFamily: "'DM Sans', sans-serif",
+            }}
+          >
+            <MessageCircle size={18} />
+            WhatsApp
+          </motion.a>
+        </motion.div>
       </div>
 
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 2.2 }}
-        onClick={scrollToAbout}
-        data-testid="button-scroll-down"
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-white/60 hover:text-white/90 transition-colors"
-        aria-label="Scroll down"
-      >
-        <span className="text-xs tracking-[0.15em] uppercase" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-          Discover
-        </span>
+      {/* Discover + Social Links — bottom center */}
+      <div className="absolute bottom-6 left-0 right-0 z-10 flex flex-col items-center gap-4">
+        {/* Social row */}
         <motion.div
-          animate={{ y: [0, 6, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 2.4 }}
+          className="flex items-center gap-3"
         >
-          <ChevronDown size={22} />
+          {socialLinks.map((s) => (
+            <motion.a
+              key={s.label}
+              href={s.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.15, y: -3 }}
+              whileTap={{ scale: 0.95 }}
+              data-testid={`link-hero-${s.label.toLowerCase()}`}
+              aria-label={s.label}
+              title={s.label}
+              className="w-10 h-10 flex items-center justify-center rounded-full backdrop-blur-sm border border-white/20 text-white transition-all duration-300"
+              style={{ backgroundColor: `${s.color}25` }}
+            >
+              {s.icon}
+            </motion.a>
+          ))}
         </motion.div>
-      </motion.button>
+
+        {/* Discover scroll */}
+        <motion.button
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 2.6 }}
+          onClick={scrollToAbout}
+          data-testid="button-scroll-down"
+          className="flex flex-col items-center gap-1.5 text-white/60 hover:text-white/90 transition-colors"
+          aria-label="Scroll down"
+        >
+          <span
+            className="text-[10px] tracking-[0.2em] uppercase"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            Discover
+          </span>
+          <motion.div
+            animate={{ y: [0, 5, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <ChevronDown size={20} />
+          </motion.div>
+        </motion.button>
+      </div>
     </section>
   );
 }
